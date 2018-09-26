@@ -1,0 +1,81 @@
+﻿<Window x:Class="MortgageCalculator.Desktop.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:MortgageCalculator.Desktop"
+        mc:Ignorable="d"
+        Title="Mortgage Calculator" Height="450" Width="800">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="100" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+            <ColumnDefinition Width="*" />
+        </Grid.ColumnDefinitions>
+        <TextBlock Text="Mortgage Calculator" FontSize="24" Grid.Row="0" Grid.ColumnSpan="2" Margin="5" />
+
+        <Label Name="lblHomeValue" Content="Home Value:" Grid.Row="1" Grid.Column="0" Margin="5, 5, 0, 5" HorizontalContentAlignment="Right" />
+        <Label Name="lblInterestRate" Content="Interest Rate:"  Grid.Row="2" Grid.Column="0" Margin="5, 5, 0, 5" HorizontalContentAlignment="Right" />
+        <Label Name="lblDownPayment" Content="Down Payment:" Grid.Row="3" Grid.Column="0" Margin="5, 5, 0, 5" HorizontalContentAlignment="Right" />
+        <Label Name="lblTerm" Content="Term:" Grid.Row="4" Grid.Column="0" Margin="5, 5, 0, 5" HorizontalContentAlignment="Right" />
+        
+        <StackPanel Grid.Row="1" Grid.Column="1" Orientation="Horizontal">
+            <Label Content="$" Margin="0, 5" HorizontalContentAlignment="Right" />
+            <TextBox Name="txtHomeValue" MinWidth="100" Margin="0, 5"
+                     Text="{Binding TotalAmount, Mode=TwoWay, StringFormat={}{0:N0}}"
+                     PreviewTextInput="Integer_PreviewTextInput" />
+            <Label Content=".00" Margin="0, 5" HorizontalContentAlignment="Left" />
+        </StackPanel>
+
+        <StackPanel Grid.Row="2" Grid.Column="1"  Orientation="Horizontal">
+            <TextBox Name="txtInterestRate" MinWidth="50" Margin="16, 5" 
+                     Text="{Binding InterestRate, Mode=TwoWay, StringFormat={}{0:N2}}"
+                     PreviewTextInput="Float_PreviewTextInput" />
+            <Label Content="%" Margin="0, 5" HorizontalContentAlignment="Left" />
+        </StackPanel>
+
+        <StackPanel Grid.Row="3" Grid.Column="1" Orientation="Horizontal">
+            <Label Content="$" Margin="0, 5" HorizontalContentAlignment="Right" />
+            <TextBox Name="txtDownPayment" MinWidth="100" Margin="0, 5"
+                     Text="{Binding DownPayment, Mode=TwoWay, StringFormat={}{0:N0}}"
+                     PreviewTextInput="Integer_PreviewTextInput" />
+            <Label Content=".00" Margin="0, 5" HorizontalContentAlignment="Left" />
+        </StackPanel>
+
+        <StackPanel Grid.Row="4" Grid.Column="1" Orientation="Horizontal">
+            <TextBox Name="txtTerm" MinWidth="100" Margin="16, 5, 0, 5"
+                     Text="{Binding Term, Mode=TwoWay, StringFormat={}{0:N0}}"
+                     PreviewTextInput="Integer_PreviewTextInput" TextAlignment="Left" VerticalAlignment="Center" />
+            <Label Content=" Years" Margin="0, 5" HorizontalContentAlignment="Left" />
+        </StackPanel>
+
+        <Label Name="lblMonthlyPayment" Content="Monthly Payment:" Grid.Row="1" Grid.Column="2" Margin="5, 5, 0, 5" HorizontalContentAlignment="Right" />
+        <Label Name="lblTotalInterest" Content="Total Interest:"  Grid.Row="2" Grid.Column="2" Margin="5, 5, 0, 5" HorizontalContentAlignment="Right" />
+        <Label Name="lblTotalPayment" Content="Total Payment:" Grid.Row="3" Grid.Column="2" Margin="5, 5, 0, 5" HorizontalContentAlignment="Right" />
+
+        <StackPanel Grid.Row="1" Grid.Column="3" Orientation="Horizontal">
+            <Label Content="$" Margin="0, 5" HorizontalContentAlignment="Right" />
+            <TextBlock Margin="0, 5" VerticalAlignment="Center"
+                     Text="{Binding MonthlyPayment, StringFormat={}{0:N}}" />
+        </StackPanel>
+        <StackPanel Grid.Row="2" Grid.Column="3" Orientation="Horizontal">
+            <Label Content="$" Margin="0, 5" HorizontalContentAlignment="Right" />
+            <TextBlock Margin="0, 5" VerticalAlignment="Center"
+                     Text="{Binding TotalInterest, StringFormat={}{0:N}}" />
+        </StackPanel>
+        <StackPanel Grid.Row="3" Grid.Column="3" Orientation="Horizontal">
+            <Label Content="$" Margin="0, 5" HorizontalContentAlignment="Right" />
+            <TextBlock Margin="0, 5" VerticalAlignment="Center"
+                     Text="{Binding TotalPayment, StringFormat={}{0:N}}" />
+        </StackPanel>
+    </Grid>
+</Window>
